@@ -1,0 +1,17 @@
+//App.scss
+
+@import 'src/styles/MyColors.scss';
+@import 'src/styles/BookCard.scss';
+
+.root{
+  background-color: #dff36d;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(53, 31, 1);
+  max-width: 1024px;
+  margin: auto;
+  padding: 15px;
+}
