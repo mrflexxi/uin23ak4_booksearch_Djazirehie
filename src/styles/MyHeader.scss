@@ -1,0 +1,40 @@
+//MyHeader.scss
+
+@import 'src/styles/MyColors.scss';
+
+.my-header {
+  background-image: url("https://images.pexels.com/photos/6424619/pexels-photo-6424619.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"); //free for use
+  border: 3px solid $BorderColor;
+  color: #dff36d;    
+  font-size: 15px;
+  padding: 20px;
+}
+ 
+.search-container {
+  display: flex;
+}
+  
+.search-input {
+  width: 85%;
+  font-size: 14px;
+  border: 1px solid $BorderColor;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 2px $ShadowColor;
+  padding: 10px;
+  margin-right: 10px; //avstand mellom inputfeltet og søkeknappen
+}
+  
+.search-button {
+  background-color: $BackButtonColor;
+  color: $TextButtonColor;
+  font-size: 14px;
+  //padding: 10px 20px;
+  border: 2px solid $BorderButtonColor;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+  &:hover {
+    background-color: $BackButtonColorHover;
+    color: $TextButtonColorHover;
+  }
+}
