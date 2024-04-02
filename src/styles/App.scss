@@ -1,17 +1,21 @@
-//App.scss
+// App.scss
 
 @import 'src/styles/MyColors.scss';
 
-.root{
+.root {
+  display: flex;
+  justify-content: center; /* Sentrerer innholdet horisontalt */
+  align-items: center; /* Sentrerer innholdet vertikalt */
   background-color: #dff36d;
+  min-height: 100vh; /* Sikrer at rot-elementet er minst like høyt som vinduet */
 }
 
 .app {
   display: flex;
   flex-direction: column;
   background-color: rgb(53, 31, 1);
-  max-width: 1024px;
-  margin: auto;
-  padding: 15px;
-  
+  max-width: 1024px; /* Endret fra kommentert ut verdi */
+  padding: 10px;
 }
+
+// Resten av stilen for MyHeader.scss forblir uendret

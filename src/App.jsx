@@ -1,10 +1,4 @@
-//App.jsx
-
 import React, { useState, useEffect, useRef } from 'react';
-//https://react.dev/reference/react/useState : const [state, setState] = useState(initialState)
-//https://react.dev/reference/react/useEffect : useEffect(setup, dependencies?)
-//https://react.dev/reference/react/useRef : const ref = useRef(initialValue)
-//import './styles/App.scss';
 import Header from './components/MyHeader';
 import SearchResults from './components/SearchResults';
 import InitialSearch from './components/JamesBondSearch';
@@ -12,26 +6,13 @@ import InitialSearch from './components/JamesBondSearch';
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [lastSearchResults, setLastSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [error, setError] = useState(null);
   const [initialSearchDone, setInitialSearchDone] = useState(false);
   const [searchLengthInfo, setSearchLengthInfo] = useState(false);
-  const [searchResultsCount, setSearchResultsCount] = useState(0);
   const searchInputRef = useRef(null);
-
-  useEffect(() => {
-    if (!initialSearchDone && searchTerm === 'James Bond') {
-      setIsSearching(true);
-      setInitialSearchDone(true);
-      handleSearch(searchTerm);
-      setSearchTerm('');
-    } else if (initialSearchDone && searchTerm !== '') {
-      handleSearch(searchTerm);
-    } else if (initialSearchDone && searchTerm === '') { // Check if search term is empty
-      setSearchResults([]); // Clear search results if search term is empty
-    }
-  }, [initialSearchDone, searchTerm]);
 
   useEffect(() => {
     if (noResults && searchInputRef.current) {
@@ -40,12 +21,10 @@ function App() {
     }
   }, [noResults]);
 
-  useEffect(() => {
-    setSearchResultsCount(searchResults.length);
-  }, [searchResults]);
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleSearch = async (term) => {
-    if (term.length < 3) {
+    if (searchTerm.trim().length < 3) {
       setSearchLengthInfo(true);
       return;
     }
@@ -55,31 +34,35 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(term)}`);
+      const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(searchTerm)}`);
       if (!response.ok) throw new Error('Failed to fetch search results');
     
       const data = await response.json();
-      setSearchResults(data.docs);
+      const newResults = data.docs;
+      if (newResults.length > 0) {
+        setSearchResults(newResults);
+        setLastSearchResults(newResults); // Lagrer de siste søkeresultatene hvis det er resultater
+      } else {
+        setNoResults(true);
+      }
       setIsSearching(false);
-      setNoResults(data.docs.length === 0); // Set noResults based on the length of data.docs
     } catch (error) {
       console.error('Error fetching search results:', error);
       setIsSearching(false);
       setError(error.message);
     }
-    
   };
 
-    const handleSearchChange = event => {
-    setSearchTerm(event.target.value);
+  const handleSearchChange = event => {
+    const value = event.target.value;
+    setSearchTerm(value);
     setSearchLengthInfo(false);
-  };
 
-  const handleSearchSubmit = event => {
-    event.preventDefault();
-    handleSearch(searchTerm); // Send searchTerm som parameter
+    // Beholder de siste søkeresultatene hvis det ikke er skrevet inn en ny søketerm
+    if (value.trim() === '' && lastSearchResults.length > 0) {
+      setSearchResults(lastSearchResults); // Viser de siste søkeresultatene når søkefeltet er tomt
+    }
   };
-  
 
   return (
     <div className="app">
@@ -91,9 +74,8 @@ function App() {
         error={error}
         noResults={noResults}
         isSearching={isSearching}
-        searchResultsCount={searchResultsCount}
       />
-    {!initialSearchDone && (
+      {!initialSearchDone && (
         <InitialSearch
           setInitialSearchDone={setInitialSearchDone}
           setSearchResults={setSearchResults}

@@ -21,4 +21,19 @@
       font-size:14px;
       line-height: 14px;
     }
+
+    .book-image {
+      img {
+        grid-row: span 3;
+        cursor: pointer;
+        width: 150px;
+        height: 190px;
+        max-width: 150px;
+        max-height: 190px;
+        border: 1px;
+        border-radius: 5%;
+        border-color: $BorderColor;
+        box-shadow: 5px 2px 5px 5px $ShadowColor;
+      }
+    }
   }
