@@ -4,6 +4,7 @@ import BookCover from '../assets/BookCover.jpg'; // Importer BookCover.jpg
 import MoreInfoImage from '../assets/merinfoomboka.png'; // Importer merinfoomboka.png
 import ToAmazon from './ToAmazon'; // Importer ToAmazon.jsx
 import ExportButton from './MerInfoOmBoka'; // Importer ExportBookInfo.jsx
+//import ScrollToTopButton from './ScrollToTopButton';
 
 function BookCard({ book }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -72,8 +73,10 @@ function BookCard({ book }) {
         <ToAmazon book={book} /> {/* Bruker ToAmazon-komponenten */}
         <ExportButton book={book} /> {/* Bruker ExportButton-komponenten */}
       </div>
+      
     </div>
   );
 }
 
 export default BookCard;
+//<ScrollToTopButton />
