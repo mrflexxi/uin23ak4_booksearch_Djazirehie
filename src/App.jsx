@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/MyHeader';
+import './styles/ScrollToTopButton.scss';
 import SearchResults from './components/SearchResults';
 import InitialSearch from './components/JamesBondSearch';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -88,6 +90,7 @@ function App() {
           <SearchResults results={searchResults} />
         )}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 }
