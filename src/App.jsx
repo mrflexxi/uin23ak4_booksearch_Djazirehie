@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; 
+//https://react.dev/reference/react/useState : const [state, setState] = useState(initialState)
+//https://react.dev/reference/react/useEffect : useEffect(setup, dependencies?)
+//https://react.dev/reference/react/useRef : const ref = useRef(initialValue)
 import Header from './components/MyHeader';
 import './styles/ScrollToTopButton.scss';
 import SearchResults from './components/SearchResults';
