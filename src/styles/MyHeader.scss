@@ -37,4 +37,42 @@
     background-color: $BackButtonColorHover;
     color: $TextButtonColorHover;
   }
+
+  .short-length-message{
+    text-align: center;
+    font-size: 18px;
+    color: $MessageShortLength;
+    margin-top: 20px;
+
+}
+.no-results-message {
+    font-weight: bold;
+    color: $MessageNotFound;
+    font-size: 18px;
+  }
+  
+.fancy-loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: $MessageLoading;
+    margin-top: 20px;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+ 
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 }
