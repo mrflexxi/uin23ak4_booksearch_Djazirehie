@@ -42,25 +42,13 @@ function ExportButton({ book }) {
             </body>
             </html>
           `;
-          
-          // Opprett en Blob-objekt med HTML-innholdet
-          const blob = new Blob([htmlContent], { type: 'text/html' });
-      
-          // Opprett en URL for Blob-objektet
-          const url = URL.createObjectURL(blob);
-      
-          // Opprett en lenke for nedlasting
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = `ISBN-${book.isbn[0]}.html`; // Set download attribute with sanitized title
-      
-          // Legg til lenken til dokumentet
-          document.body.appendChild(link);
-          
-          // Klikk på lenken for å starte nedlastingen
-          link.click();
-      
-          // Fjern lenken fra dokumentet etter nedlastingen er fullført
+         
+          // Åpne en ny fane med den dynamiske HTML-siden
+          const newWindow = window.open();
+          newWindow.document.open();
+          newWindow.document.write(htmlContent);
+          newWindow.document.close();
+
           document.body.removeChild(link);
         } catch (error) {
           console.error('Error exporting book information:', error);

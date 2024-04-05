@@ -1,18 +1,17 @@
+//MyHeader.scss
+
 @import 'src/styles/MyColors.scss';
 
 .my-header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: center; /* Sentrer innholdet vertikalt */
-  background-color: rgb(53, 31, 1);
-  background-image: url("https://images.pexels.com/photos/6424619/pexels-photo-6424619.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
   width: 98%;
   max-width: 100%;
-  border: 3px solid $BorderColor;
-  color: #dff36d;
-  font-size: 15px;
-  padding: 5px;
+  color: gray;
+  padding-bottom: 10px;
+  
 
   .search-container {
     display: flex;
@@ -30,15 +29,13 @@
     }
 
     .search-button {
-      background-color: $BackButtonColor;
       color: $TextButtonColor;
       border: 2px solid $BorderButtonColor;
       border-radius: 5px;
       cursor: pointer;
-      box-shadow: 2px 2px 5px 2px $ShadowColor;
-
+      border: 1px solid $BorderColor;
+      box-shadow: 1px 2px 1px 2px $ShadowColor;
       &:hover {
-        background-color: $BackButtonColorHover;
         color: $TextButtonColorHover;
       }
     }
@@ -74,14 +71,11 @@
   }
 }
 
-/////////////////////////////////////////////////////////////////////////
-
 @media screen and (min-width: 100px) and (max-width: 400px) {
   .app {
     display: flex;
     flex-direction: column;
-    background-color: rgb(14, 52, 102);
-    max-width: 500px;
+    max-width: 400px;
     margin: auto;
     padding: 20px;
   }
@@ -89,22 +83,19 @@
   .my-header {
     display: flex;
     flex-direction: rows; /* Sett flex-direksjon til kolonne for å ha tre rader */ 
-    background-image: url("https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?auto=compress&cs=tinysrgb&w=600"); //free for use
-    background-color: $primaryColor; /* Sett bakgrunnsfargen etter behov */
-    border: 3px solid $BorderColor;
-    color: #dff36d; /* Sett tekstfargen etter behov */   
+    color: gray; /* Sett tekstfargen etter behov */   
     font-size: 10px;
     align-items: center;
     padding: 1px;
     margin-bottom: 2px;
   } 
-
+  
   .search-container {
-      //flex-direction: column;
+      flex-direction: column;
       align-items: center;
       width: 100%;
       margin-top: 1px;
-
+  
       .search-input {
         width: 60%;
         padding: 10px;
@@ -122,17 +113,14 @@
         font-size: 14px;
         border: 2px solid $BorderButtonColor;
         border-radius: 5px;
-        background-color: $BackButtonColor;
         color: $TextButtonColor;
         height: 40px;
         margin-bottom: 18px;
         cursor: pointer;
       
         &:hover {
-          background-color: $BackButtonColorHover;
           color: $TextButtonColorHover;
         }
       }
     }
-  
   }

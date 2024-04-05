@@ -1,0 +1,8 @@
+body {
+  justify-content: center;
+  /* Sentrer innholdet horisontalt */ }
+
+.app {
+  align-items: center;
+  /* Sentrer innholdet vertikalt */
+  padding: 10px; }
