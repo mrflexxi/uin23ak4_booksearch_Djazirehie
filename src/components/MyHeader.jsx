@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/App.scss';
-import '../styles/MyHeader.scss';
+import '../styles/css/App.css';
+import '../styles/css/MyHeader.css';
 
 const MyHeader = ({
   searchTerm,
@@ -8,10 +8,11 @@ const MyHeader = ({
   handleSearchChange,
   searchLengthInfo,
   error,
+  noResults,
   isSearching,
 }) => {
   return (
-    <header className="my-header">
+    <header className="my-header"> 
       <h1>Book Search</h1>
       <form onSubmit={handleSearchSubmit} className="search-container">
         <input
@@ -27,6 +28,7 @@ const MyHeader = ({
         {searchLengthInfo && <p className="short-length-message">Search term must be at least 3 characters long.</p>}
         {error && <p className="message error">Error: {error}</p>}
         {isSearching && <p className="fancy-loading-message">Please wait..., results for "{searchTerm}" are loading.</p>}
+        {noResults && !isSearching && <p className="no-results-message">No results found for "{searchTerm}". Please try again with a different search term.</p>}
       </div>
     </header>
   );

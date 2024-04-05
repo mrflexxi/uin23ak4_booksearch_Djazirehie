@@ -1,20 +1,9 @@
 // App.scss
 
-@import 'src/styles/MyColors.scss';
-
 body{
-  justify-content: center; /* Sentrer innholdet horisontalt */
-  align-items: center; /* Sentrer innholdet vertikalt */
-  background-color: rgb(1, 5, 43);;
-  
+  justify-content: center; /* Sentrer innholdet horisontalt */  
 }
 .app {
-  display: flex; /* Bruk fleksboksmodellen */
-  flex-direction: column;
-  justify-content: center; /* Sentrer innholdet horisontalt */
   align-items: center; /* Sentrer innholdet vertikalt */
-  background-color: rgb(53, 31, 1);
-  max-width: 100%;
-  margin: auto;
   padding: 10px;
 }
